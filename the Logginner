@@ -1,0 +1,45 @@
+import sys
+import time, subprocess, psutil
+
+
+from pynput.keyboard import Key, Controller
+
+username = 'Put in your username here as a string'
+password = 'put in your password here as a string'
+
+keyboard = Controller()
+
+subprocess.call(['D:\Program Files\League of Legends\LeagueClient.exe'])
+
+
+def checkIfProcessRunning(processName):
+    '''
+    Check if there is any running process that contains the given name processName.
+    '''
+    #Iterate over the all the running process
+    for proc in psutil.process_iter():
+        try:
+            # Check if process name contains the given name string.
+            if processName.lower() in proc.name().lower():
+                return True
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+            pass
+    return False;
+
+
+x = checkIfProcessRunning('RiotClientUX')
+while x==False:
+    x = checkIfProcessRunning('RiotClientUX')
+if x==True:
+    keyboard.press(Key.tab)
+    keyboard.release(Key.tab)
+    keyboard.press(Key.tab)
+    keyboard.release(Key.tab)
+    keyboard.type(username)
+    keyboard.press(Key.tab)
+    keyboard.release(Key.tab)
+    keyboard.type(password)
+    keyboard.press(Key.enter)
+    keyboard.release(Key.enter)
+
+
