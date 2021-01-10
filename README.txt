@@ -1,3 +1,5 @@
+EDIT: Just realised that my python script isn't an executable like how I'd like it to be. It'll have to be copied into a .py file and then turned into an executable...
+
 To use:
 line 7, in between the ''  type in your username.
 line 8, in between the '' type in your password.
